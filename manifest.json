@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "News Filter for is.fi",
+  "version": "1.0",
+  "description": "Hides articles from is.fi based on keywords in the title.",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["scripting", "storage"],
+  "host_permissions": ["https://www.is.fi/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Edit News Filter keywords"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.is.fi/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
