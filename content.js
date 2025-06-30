@@ -5,10 +5,18 @@ function getKeywords(callback) {
 }
 
 function removeMatchingArticles() {
-  getKeywords((keywords) => {
-    const articles = document.querySelectorAll("article");
+  const articles = document.querySelectorAll("article");
 
+  getKeywords((keywords) => {
     articles.forEach((article) => {
+      const hasPaidContent =
+        article.querySelector('div[data-testid="paid-indicator"]') !== null;
+      if (hasPaidContent) {
+        console.log(article);
+        article.remove();
+        return;
+      }
+
       const titleElement = article.querySelector("h2, h3, h1");
       if (!titleElement) return;
 
