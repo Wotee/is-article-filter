@@ -14,7 +14,11 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.is.fi/*"],
+      "matches": [
+        "https://www.is.fi/",
+        "https://www.is.fi/*/",
+        "https://www.is.fi/*/index.html"
+      ],
       "js": ["content.js"],
       "run_at": "document_idle"
     }
